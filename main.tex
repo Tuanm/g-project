@@ -1,0 +1,22 @@
+\documentclass[14pt]{extarticle}
+\usepackage{palatino} % Change font family
+\usepackage[utf8]{vietnam} % For Vietnamese typing
+\usepackage{graphicx} % For Image usage
+\usepackage[hidelinks,unicode]{hyperref} % Make TOC clickable and hide the Red Border, using Unicode
+\hypersetup{
+    linkcolor=black % Set color of links as Black
+}
+\setcounter{tocdepth}{1} % Only show parts, chapters, and sections in TOC
+\setlength\parindent{0pt} % No Indentation
+\usepackage{amssymb} % For Mathematical symbols
+
+
+\begin{document}
+\include{Cover}
+\include{Preface}
+\include{TableOfContents}
+% --- Contents ---
+\include{contents/Ethereum}
+% ----------------
+\include{References}
+\end{document}
