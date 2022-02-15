@@ -1,3 +1,9 @@
-\subsection{Bằng chứng cổ phần}
+\subsection{Bằng chứng cổ phần - PoS}
 
-\textit{Bằng chứng cổ phần}\footnote{Proof of Stake - PoS} (PoS) là một lớp các cơ chế đồng thuận hoạt động bằng cách chọn ra các xác thực viên dựa trên tỷ lệ tiền mã hoá mà họ nắm giữ. 
+\textit{Bằng chứng cổ phần}\footnote{Proof of Stake - PoS} (PoS) là một lớp các cơ chế đồng thuận hoạt động bằng cách chọn ra các xác thực viên dựa trên tỷ lệ tiền mã hoá mà họ nắm giữ.\\
+
+Cơ chế PoS cho phép chủ sở hữu của các đồng tiền mã hoá "cọc" (stake) một lượng tiền để có thể trở thành một nút xác thực. \textit{Cọc}\footnote{Staking} là khi một nút bỏ ra một số tiền để tham gia quá trình xác thực giao dịch. Số tiền này sẽ bị khoá khi \textit{cọc}, và cần \textit{huỷ cọc} (unstake) để có thể sử dụng giao dịch.\\
+
+Khi một khối các giao dịch sẫn sàng để thực thi, cơ chế PoS sẽ chọn một nút xác thực (xác thực viên) để đánh giá khối đó. Xác thực viên sẽ kiểm tra thông tin các giao dịch trong khối có chính xác hay không, nếu đúng, khối đó sẽ được thêm vào chuỗi khối. Nút thêm khối mới vào chuỗi, tất nhiên, sẽ nhận được phần thưởng. Tuy nhiên, nếu nút đó thêm một khối với thông tin không chính xác, số tiền cọc của nút đó sẽ mất (một phần hoặc toàn bộ).\\
+
+Mỗi cơ chế PoS có cách chọn xác thực viên khác nhau. Thông thường, quá trình lựa chọn ngẫu nhiên sẽ diễn ra, các yếu tố ảnh hưởng đến có thể kể ra như số lượng tiền mã hoá nút đó bỏ ra để cọc, nút đó tham gia quá trình cọc bao lâu rồi, vân vân. Mặc dù, ai cũng có thể tham gia cọc, nhưng tỷ lệ được chọn làm xác thực viên là rất thấp nếu số tiền bỏ ra để cọc. Vì lý do này, các thành viên tham gia quá trình cọc gia nhập vào các \textit{bể cọc}\footnote{Staking pool}. Chủ của mỗi bể cọc sẽ thiết lập một nút tham gia quá trình xác thực, và các thành viên trong bể cọc sẽ "dồn tiền" để nút đó tham gia cọc để gia tăng cơ hội được chọn làm nút xác thực. Phần thưởng khi nút đó thêm khối mới vào chuỗi sẽ được chia cho các thành viên trong bể cọc đó.
