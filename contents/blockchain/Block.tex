@@ -1,0 +1,12 @@
+\subsection{Khối}
+
+Các \textit{khối} (block) nắm giữ các giao dịch hợp lệ đã được băm, quá trình mã hoá này sử dụng cấu trúc của một \textit{cây Merkle}\footnote{Merkle tree}. Mỗi khối bao gồm mã băm của khối liền trước trong chuỗi khối để liên kết với khối đó. Các khối liên kết với nhau định hình một \textit{chuỗi} (chain). Quá trình tiếp diễn này xác minh tính toàn vẹn của khối trước đó, cho đến khối đầu tiên - được gọi là \textit{khối bắt đầu}\footnote{Genesis block}. Để đảm bảo dữ liệu bên trong, các khối thường có \textit{chữ ký số}\footnote{Digital signature}.\\
+
+Đôi khi các khối khác nhau được tạo ra đồng thời, tạo ra sự \textit{phân nhánh tạm thời}\footnote{Temporay fork}. Để bảo mật lịch sử băm, bất kỳ chuỗi khối nào đều có một thuật toán để "tính điểm" các phiên bản khác nhau, phần lịch sử của nhánh nào có "điểm số" lớn hơn sẽ được chọn cho chuỗi khối. Các khối không được chọn để đưa vào chuỗi khối được gọi là \textit{khối mồ côi}\footnote{Orphan block}. Sự ngang hàng trong mạng khiến cho cơ sở dữ liệu có rất nhiều phiên bản/lịch sử theo thời gian, và phiên bản có "điểm số" cao nhất sẽ được giữ lại. Bất cứ khi nào một thành phần trong mạng nhận được một phiên bản có "điểm số" lớn hơn (thường là phiên bản cũ với một khối mới được thêm vào), nó sẽ mở rộng/ghi đè cơ sở dữ liệu và chuyển tiếp cho các thành phần ngang hàng khác ở trong mạng.
+
+\subsubsection{Thời gian khối}
+\textit{Thời gian khối}\footnote{Block time} là thời gian trung bình để một mạng tạo ra một khối mới trong chuỗi khối. Ngay sau khi khối mới được tạo, dữ liệu trong nó sẽ được xác minh. Đối với tiền điện tử, các giao dịch diễn ra, một thời gian khối ngắn hơn đồng nghĩa với việc giao dịch sẽ nhanh hơn.
+
+\subsubsection{Phân nhánh hoàn toàn}
+\textit{Phân nhánh hoàn toàn}\footnote{Hard fork} là việc thay đổi quy tắc trong chuỗi khối khiến các phần mềm xác thực dựa vào quy tắc cũ xác thực các chuỗi mới được tạo dựa trên quy tắc mới không hợp lệ. Trong trường hợp có một đợt phân nhánh hoàn toàn, tất cả các nút cần nâng cấp phần mềm để theo quy tắc mới. Nếu có một nhóm các nút tiếp tục sử dụng phần mềm cũ trong khi các nút còn lại sử dụng phần mềm mới, sự chia tách có thể xảy ra.
+

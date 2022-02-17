@@ -1,6 +1,5 @@
 .vscode/
 
-**/*.pdf
 **/*.fdb_latexmk
 **/*.fls
 **/*.log
