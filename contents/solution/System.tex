@@ -77,5 +77,5 @@ Với các thành viên tham gia cấp phát văn bằng, thông tin được l�
     \caption{Biểu đồ trình tự đăng nhập với "xác thực một nút".}
 \end{figure}
 
-Với việc sử dụng đa xác thực bằng ví MetaMask, mỗi khi một lô văn bằng cần được đẩy lên mạng chuỗi khối, mỗi thành viên cần biểu quyết đồng ý hoặc từ chối. Thông tin về các biểu quyết này được lưu trong bảng \texttt{batch\_confirmers}, với hai \textit{khoá ngoại lai}\footnote{Foreign key - FK} (FK) tương ứng với các khoá chính của bảng \texttt{accounts} và bảng \texttt{batches}.\\
+Với việc sử dụng đa xác thực bằng ví MetaMask, mỗi khi một lô văn bằng cần được đẩy lên mạng chuỗi khối, mỗi thành viên cần biểu quyết đồng ý hoặc từ chối. Thông tin về các biểu quyết này được lưu trong bảng \texttt{batch\_confirmers}, với hai \textit{khoá ngoại lai}\footnote{Foreign key - FK} (FK) tương ứng với các \textit{khoá chính}\footnote{Primary key - PK} (PK) của bảng \texttt{accounts} và bảng \texttt{batches}.\\
 
