@@ -1,5 +1,5 @@
 \newpage
-\subsection{Xây dựng hệ thống}
+\section{Xây dựng hệ thống}
 
 Với yêu cầu của bài toán, ta cần xây dựng hệ thống quản lý văn bằng cho các cơ sở giáo dục, và hệ thống tra cứu thông tin văn bằng cho phía doanh nghiệp (hoặc người có nhu cầu tra cứu).\\
 
@@ -13,7 +13,7 @@ Với yêu cầu của bài toán, ta cần xây dựng hệ thống quản lý 
 Những hệ thống này sẽ tương tác với các hợp đồng thông minh trên mạng chuỗi khối, bao gồm \textit{Kho văn bằng} (Certs) và \textit{Ví đa chữ ký} (MultiSig. Wallet). Trong bài báo cáo này, em xin phép tập trung trình bày về phần thiết kế các hợp đồng thông minh được triển khai cùng hệ thống.
 
 
-\subsubsection{Kho văn bằng}
+\subsection{Kho văn bằng}
 \textit{Kho văn bằng} (hay \textit{kho chứng chỉ}) là một hợp đồng thông minh nắm giữ thông tin các văn bằng được lưu trữ trên mạng chuỗi khối. Thông tin được tổ chức theo cấu trúc dạng cây, nắm giữ địa chỉ ví của các cơ sở giáo dục và danh sách các văn bằng cơ sở đó đã cấp phát.\\
 
 Để lưu trữ văn bằng trên mạng chuỗi khối, các cơ sở giáo dục cần sử dụng một địa chỉ ví để tương tác với hợp đồng thông minh được triển khai trên mạng đó. Mỗi cơ sở phát hành văn bằng sẽ có một địa chỉ ví xác định, và trên cấu trúc cây được mô tả như trên, địa chỉ này sẽ được lưu trữ ở các \textit{nút bậc 1} (level-1 node), ký hiệu \texttt{School Address}; thông tin văn bằng được thể hiện qua các số hiệu tương ứng với các \textit{nút lá} (leaf) với ký hiệu \texttt{Certificate No.}.\\
@@ -35,7 +35,7 @@ Những hệ thống này sẽ tương tác với các hợp đồng thông minh
 Để \textit{xem thông tin}, người tra cứu cần cung cấp địa chỉ ví của cơ sở phát hành văn bằng (\texttt{School Address}), và số hiệu văn bằng của cơ sở đó (\texttt{Certificate No.}).
 
 
-\subsubsection{Ví đa chữ ký}
+\subsection{Ví đa chữ ký}
 \textit{Ví đa chữ ký} là một hợp đồng thông minh với mục đích tăng tính bảo mật cho quá trình tương tác thay đổi thông tin văn bằng trên chuỗi khối.\\
 
 Với việc "đẩy" thông tin văn bằng lên mạng chuỗi khối một cách thông thường, mỗi cơ sở giáo dục sử dụng địa chỉ ví của một cá nhân đại diện để tương tác, hoặc lựa chọn một địa chỉ ví và sử dụng chung cho cá nhân trong cơ sở. Điều này đảm bảo mỗi cơ sở cấp phát chứng chỉ có một địa chỉ \texttt{School Address} duy nhất. Tuy nhiên, khi nhiều cá nhân cùng dùng một địa chỉ ví, khả năng mất cắp tài sản liên kết với địa chỉ này càng lớn, đặc biệt khi nó còn được sử dụng trong các giao dịch khác có giá trị về tài chính (như địa chỉ sở hữu tiền mã hoá với giá trị cao trên các \textit{sàn giao dịch}\footnote{Exchange}, hay liên kết với các \textit{DApp} khác). Do đó, một cơ chế giúp giảm thiểu khả năng nhiều người cùng sở hữu một địa chỉ ví và có thể sử dụng địa chỉ ví để xác thực thông tin cơ sở cấp phát văn bằng là vô cùng cần thiết. \textit{Ví đa chữ ký} ra đời để giải quyết vấn đề này.\\
@@ -55,7 +55,7 @@ Không giống với các \textit{hệ thống xác thực đa chữ ký}\footno
 \end{figure}
 
 
-\subsubsection{Các yêu cầu liên quan}
+\subsection{Các yêu cầu liên quan}
 Với \textit{hệ thống tra cứu}, không có có quá nhiều yêu cầu cần thực hiện. Hiện nay, các tiện ích, phần mềm được tạo ra, đáp ứng nhu cầu kết nối đến mạng chuỗi khối, trong số đó có thể kể đến \href{https://github.com/ChainSafe/web3.js}{\textit{Web3.js}}. \textit{Web3.js} là một dự án mã nguồn mở của \textit{ChainSafe}, được viết chủ yếu bởi ngôn ngữ lập trình \textit{JavaScript}, cung cấp các công cụ giúp người dùng tương tác với mạng Ethereum và các hợp đồng thông minh trên mạng này. \textit{Web3.js} có thể được tích hợp cho các \textit{DApp} dạng \textit{web}\footnote{Website} (webapp). Việc tra cứu thông tin văn bằng trở nên đơn giản và hết sức thân thiện, khi người dùng có thể trực tiếp thao tác qua giao diện trên trình duyệt.\\
 
 Đối với \textit{hệ thống quản lý}, yêu cầu quan trọng nhất của hệ thống là ghi lại thông tin các văn bằng được tạo ra. Các văn bằng này sau khi được cấp phát cần được cập nhật trạng thái để tránh việc đẩy nhiều lần lên chuỗi khối. Mặc dù việc gửi một văn bằng nhiều lần lên chuỗi khối không gây ảnh hưởng xấu gì về mặt thông tin do các thiết kế các hợp đồng thông minh không cho phép hai văn bằng cùng \texttt{School Address} và \texttt{Certificate No.} cùng tồn tại; tuy nhiên, mỗi khi tương tác với hợp đồng thông minh, chi phí giao dịch sẽ phát sinh. Như đã trình bày ở \textit{Hình \ref{images/system-overview}}, phía \textit{máy chủ} (server) sẽ lắng nghe các \textit{sự kiện} (event) khi trạng thái của hợp đồng thông minh thay đổi, nhanh chóng cập nhật thông tin tương ứng trong \textit{cơ sở dữ liệu}, và thông báo lên giao diện người dùng. Ở hệ thống này, để tương tác được với hợp đồng thông minh, các thành viên trong cơ sở cấp phát văn bằng cần sử dụng thêm một \textit{ví mã hoá}\footnote{Crypto wallet} lưu trữ các địa chỉ ví của họ. Một số ví mã hoá phổ biến có thể kể đến như \href{https://metamask.io/}{\textit{MetaMask}}, \textit{Coinbase}.\\

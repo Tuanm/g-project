@@ -1,4 +1,8 @@
-\documentclass[14pt]{extarticle}
+\documentclass{report}
+\usepackage[fontsize=13pt]{scrextend}
+\usepackage{setspace}
+\setstretch{1.25}
+\usepackage[left=3.5cm,right=2cm,top=3.5cm,bottom=3cm]{geometry}
 \usepackage{palatino} % Change font family
 \usepackage[utf8]{vietnam} % For Vietnamese typing
 \usepackage{graphicx} % For Image usage
@@ -15,16 +19,17 @@
 
 
 \begin{document}
-\include{Cover}
-\include{Overview}
-\include{Preface}
-\include{TableOfContents}
+\include{bia}
+\include{phieu-danh-gia}
+\include{loi-cam-on}
+\include{muc-luc}
 % --- Contents ---
-\include{contents/Blockchain}
-\include{contents/Ethereum}
-\include{contents/Consensus}
-\include{contents/Solution}
-\include{contents/Conclusion}
+\include{noi-dung/gioi-thieu-bai-toan}
+\include{noi-dung/ma-hoa-bat-doi-xung}
+\include{noi-dung/chuoi-khoi}
+\include{noi-dung/ipfs}
+\include{noi-dung/giai-phap}
+\include{noi-dung/ket-luan}
 % ----------------
-\include{References}
+\include{tai-lieu-tham-khao}
 \end{document}

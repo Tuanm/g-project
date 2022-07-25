@@ -1,0 +1,69 @@
+\section{Tổng quan về chuỗi khối}
+
+Một chuỗi khối là một sổ cái điện tử \textit{phân tán}\footnote{Distributed}, \textit{phi tập trung}\footnote{Decentralized}, bao gồm các bản ghi được gọi là \textit{khối} (block) thường được dùng để ghi lại các \textit{giao dịch} (transaction) qua các máy tính.\\
+
+Một chuỗi khối có thể bao gồm bảy lớp:
+\begin{enumerate}
+    \item Cơ sở hạ tầng: Phần cứng
+    \item Mạng: Khám phá các nút mạng, chuyển tiếp thông tin, và xác thực
+    \item \textit{Đồng thuận}\footnote{Consensus}
+    \item Dữ liệu: Các khối, các giao dịch
+    \item Ứng dụng: \textit{Hợp đồng thông minh}\footnote{Smart Contract}, \textit{ứng dụng phi tập trung}\footnote{Decentralized application (Dapp)}
+\end{enumerate}
+
+\subsection{Khối}
+
+Các \textit{khối} (block) nắm giữ các giao dịch hợp lệ đã được băm, quá trình mã hoá này sử dụng cấu trúc của một \textit{cây Merkle}\footnote{Merkle tree}. Mỗi khối bao gồm mã băm của khối liền trước trong chuỗi khối để liên kết với khối đó. Các khối liên kết với nhau định hình một \textit{chuỗi} (chain). Quá trình tiếp diễn này xác minh tính toàn vẹn của khối trước đó, cho đến khối đầu tiên - được gọi là \textit{khối bắt đầu}\footnote{Genesis block}. Để đảm bảo dữ liệu bên trong, các khối thường có \textit{chữ ký số}\footnote{Digital signature}.\\
+
+Đôi khi các khối khác nhau được tạo ra đồng thời, tạo ra sự \textit{phân nhánh tạm thời}\footnote{Temporay fork}. Để bảo mật lịch sử băm, bất kỳ chuỗi khối nào đều có một thuật toán để "tính điểm" các phiên bản khác nhau, phần lịch sử của nhánh nào có "điểm số" lớn hơn sẽ được chọn cho chuỗi khối. Các khối không được chọn để đưa vào chuỗi khối được gọi là \textit{khối mồ côi}\footnote{Orphan block}. Sự ngang hàng trong mạng khiến cho cơ sở dữ liệu có rất nhiều phiên bản/lịch sử theo thời gian, và phiên bản có "điểm số" cao nhất sẽ được giữ lại. Bất cứ khi nào một thành phần trong mạng nhận được một phiên bản có "điểm số" lớn hơn (thường là phiên bản cũ với một khối mới được thêm vào), nó sẽ mở rộng/ghi đè cơ sở dữ liệu và chuyển tiếp cho các thành phần ngang hàng khác ở trong mạng.
+
+\subsubsection{Thời gian khối}
+\textit{Thời gian khối}\footnote{Block time} là thời gian trung bình để một mạng tạo ra một khối mới trong chuỗi khối. Ngay sau khi khối mới được tạo, dữ liệu trong nó sẽ được xác minh. Đối với tiền điện tử, các giao dịch diễn ra, một thời gian khối ngắn hơn đồng nghĩa với việc giao dịch sẽ nhanh hơn.
+
+\subsubsection{Phân nhánh hoàn toàn}
+\textit{Phân nhánh hoàn toàn}\footnote{Hard fork} là việc thay đổi quy tắc trong chuỗi khối khiến các phần mềm xác thực dựa vào quy tắc cũ xác thực các chuỗi mới được tạo dựa trên quy tắc mới không hợp lệ. Trong trường hợp có một đợt phân nhánh hoàn toàn, tất cả các nút cần nâng cấp phần mềm để theo quy tắc mới. Nếu có một nhóm các nút tiếp tục sử dụng phần mềm cũ trong khi các nút còn lại sử dụng phần mềm mới, sự chia tách có thể xảy ra.
+
+
+\subsection{Phi tập trung}
+
+Bằng cách lưu dữ liệu thông qua \textit{mạng ngang hàng}\footnote{Peer-to-peer network (P2P network)}, chuỗi khối giảm được các rủi ro trong lưu trữ dữ liệu tập trung. Chuỗi khối phi tập trung sử dụng \textit{truyền thông điệp tuỳ biến}\footnote{Ad hoc message passing} và \textit{mạng phân tán}\footnote{Distributed networking}. Khi thiếu đi tính phi tập trung, chuỗi khối có thể đối mặt với \textit{tấn công 51\%} (51\% attack) - một thành phần trong mạng có thể kiểm soát nhiều hơn nửa phần còn lại của mạng và điều khiển các bản ghi trong chuỗi khối như ý muốn, trong đó có \textit{chi tiêu gấp đôi} (double-spending).\\
+
+Mạng chuỗi khối ngang hàng giảm thiểu khả năng bị khai thác tại các điểm tập trung dễ bị tấn công nào đó. Các phương pháp bảo mật trong chuỗi khối bao gồm việc sử dụng \textit{mã hoá khoá công khai}\footnote{Public-key cryptography}. Mỗi \textit{khoá công khai} (public key), chuỗi ký tự dài ngẫu nhiên, là một địa chỉ (address) trong chuỗi khối. Các \textit{token} gửi đi khắp mạng sẽ được ghi lại thuộc về một địa chỉ nào đó của chuỗi khối. Mỗi \textit{khoá riêng tư} (private key) giống như một mật khẩu, giúp chủ sở hữu có thể truy cập vào \textit{tài sản số}\footnote{Digial asset} của họ. Dữ liệu được lưu trong chuỗi khối được cho là không thể bị phá vỡ.\\
+
+Mỗi \textit{nút} (node) trong hệ thống phi tập trung giữ một bản sao của chuỗi khối. Chất lượng dữ liệu được duy trì bởi sự \textit{nhân rộng cơ sở dữ liệu}\footnote{Database replication} và sự tin cậy tính toán. Sẽ không có bản sao "chính" nào, cũng sẽ không có người dùng nào "đáng tin" hơn bất cứ ai trong hệ thống. Các giao dịch được gửi đi khắp/quảng bá (broadcasted) trong mạng qua phần mềm. Các thông điệp được gửi dựa trên \textit{nền tảng nỗ lực tốt nhất}\footnote{Best-effort basis}. Các \textit{nút đào}\footnote{Mining node} xác thực giao dịch, thêm chúng vào khối mà nút đó đang tạo, và gửi khối đó đi khắp các nút trong mạng khi đã hoàn thành.
+
+\subsection{Tính mở}
+
+Các chuỗi khối mở \textit{dễ dùng}\footnote{User-friendly} hơn so với các bản ghi truyền thống - mặc dù mở nhưng vẫn cần truy cập vật lý để xem. Tất cả các chuỗi khối trước đây đều \textit{vô quyền} (permissionless). Nhiều tranh cãi đã nổ ra liên quan đến định nghĩa của chuỗi khối: Liệu một hệ thống riêng tư với xác thực viên được uỷ quyền bởi một \textit{trung tâm uỷ quyền}\footnote{Central authority} có được coi là một chuỗi khối hay không. Phía ủng hộ các chuỗi phân quyền hoặc riêng tư muốn thuật ngữ "chuỗi khối" có thể áp dụng với bất cứ cấu trúc dữ liệu phân dữ liệu thành các \textit{khối đóng dấu thời gian}\footnote{Time-stamped block}. Phía phản đối điều này khẳng định các \textit{hệ thống phân quyền} (permissioned system) giống như cơ sở dữ liệu truyền thống, không hỗ trợ xác thực dữ liệu phi tập trung, không thể chống lại sự giả mạo và sửa đổi.
+
+\subsubsection{Sự vô quyền}
+Một lợi thế của một mạng chuỗi khối mở, vô quyền, hoặc công khai là không cần bảo vệ chống lại các tác nhân xấu, không cần kiểm soát truy cập. Nghĩa là, các ứng dụng có thể được thêm vào mạng mà không cần sự chấp thuận và sự tin tưởng của các nút khác trong mạng, sử dụng chuỗi khối như là một \textit{lớp vận chuyển}\footnote{Transport layer}.
+
+\subsubsection{Chuỗi khối phân quyền/riêng tư}
+Các chuỗi khối phân quyền sử dụng một lớp điều khiển truy cập để quản lý những ai truy cập vào mạng. Trái với mạng chuỗi khối công cộng, xác thực viên trong mạng chuỗi khối riêng tư được kiểm tra chủ của mạng. Chủ của mạng không dựa vào các \textit{nút ẩn danh}\footnote{Anonymous node} để xác thực giao dịch hay các quyền lợi từ \textit{hiệu ứng mạng}\footnote{Network effect}. Các chuỗi khối phân quyền còn được biết đến với cái tên \textit{chuỗi khối consortium}\footnote{Consortium blockchain}.
+
+\subsection{Các thuật toán đồng thuận phổ biến}
+
+\subsubsection{Bằng chứng công việc - PoW}
+
+\textit{Bằng chứng công việc}\footnote{Proof of Work - PoW} (PoW) là một dạng của bằng chứng mã hoá, trong đó một bên chứng minh cho các bên khác (bên xác thực) rằng họ đã bỏ ra khối lượng tính toán nào đó. Bên xác thực sẽ tuần tự xác minh tính đúng đắn của bằng chứng này một cách dễ dàng.\\
+
+PoW được đưa ra lần đầu bởi \textit{Cynthia Dwork} và \textit{Moni Naor} vào năm 1993 như một cách để xác định các cuộc \textit{tấn công từ chối dịch vụ}\footnote{Denial-of-Service attack - DoS attack}, và các vấn đề liên quan đến lạm dụng dịch vụ như \textit{spam} trong một mạng bằng cách yêu cầu một vài công việc bởi phía yêu cầu dịch vụ, thường là một quá trình tiêu tốn tài nguyên (thời gian, bộ nhớ) của máy tính. Thuật ngữ này được sử dụng lần đầu trong một bài báo của \textit{Markus Jakobsson} và \textit{Ari Juels}. Sau đó, nó được phổ biến bởi \textit{Bitcoin}, như là một thuật toán đồng thuận đầu tiên trong mạng phi tập trung không phân quyền.\\
+
+Trong mạng Bitcoin, các nút đào cần thực hiện giải một bài toán "khó" bằng cách tìm ra một con số được gọi là \textit{nonce} sao cho sau khi kết hợp nó với các thông tin đã có của một khối trong chuỗi khối để thực hiện mã hoá băm, ta được một chuỗi băm bắt đầu với một chuỗi các ký tự "0" liên tiếp nhất định, và dãy số này cũng chính là địa chỉ của khối được tạo ra. Nút đầu tiên giải quyết được bài toán trên sẽ quảng bá khối đó lên toàn bộ mạng, các nút khác sẽ xác thực lại tính đúng đắn bằng cách sử dụng hàm băm để mã hoá lại thông tin của khối, so sánh với địa chỉ của khối: Nếu đúng, khối đó sẽ được thêm vào chuỗi, và nút tạo ra khối đó sẽ được nhận phần thưởng. Phần thưởng ở trong mạng Bitcoin chính là một lượng nhỏ đồng tiền mã hoá Bitcoin, và được gửi tới địa chỉ nút nhận ở khối nhất định sau khối vừa được thêm vào.\\
+
+Do sự cải tiến về mặt công nghệ, các máy tính ngày nay có sức mạnh tính toán vô cùng lớn, tạo ra thách thức với các cơ chế đồng thuận dựa trên khối lượng tính toán, trong đó có PoW. Chính vì vậy, độ khó của bài toán mà các nút cần giải quyết ngày càng tăng lên. Tính tới thời điểm tháng 11 năm 2021, số lượng ký tự "0" liên tiếp trong phần đầu của địa chỉ khối trong mạng Bitcoin đã lên tới 7 chữ số, và thời gian để một giao dịch được thực thi trên mạng này xấp xỉ 10 phút. Thời gian thực thi giao dịch lâu khiến cho trải nghiệm của người dùng giảm thấp, đôi khi gây tắc nghẽn hệ thống mạng do nhiều giao dịch không được xử lý. Các cơ chế đồng thuận khác được đưa ra để giải quyết hạn chế này, trong đó có \textit{Bằng chứng cổ phần} - PoS.
+
+\subsubsection{Bằng chứng cổ phần - PoS}
+
+\textit{Bằng chứng cổ phần}\footnote{Proof of Stake - PoS} (PoS) là một lớp các cơ chế đồng thuận hoạt động bằng cách chọn ra các xác thực viên dựa trên tỷ lệ tiền mã hoá mà họ nắm giữ.\\
+
+Cơ chế PoS cho phép chủ sở hữu của các đồng tiền mã hoá "cọc" (stake) một lượng tiền để có thể trở thành một nút xác thực. \textit{Cọc}\footnote{Staking} là khi một nút bỏ ra một số tiền để tham gia quá trình xác thực giao dịch. Số tiền này sẽ bị khoá khi \textit{cọc}, và cần \textit{huỷ cọc} (unstake) để có thể sử dụng giao dịch.\\
+
+Khi một khối các giao dịch sẫn sàng để thực thi, cơ chế PoS sẽ chọn một nút xác thực (xác thực viên) để đánh giá khối đó. Xác thực viên sẽ kiểm tra thông tin các giao dịch trong khối có chính xác hay không, nếu đúng, khối đó sẽ được thêm vào chuỗi khối. Nút thêm khối mới vào chuỗi, tất nhiên, sẽ nhận được phần thưởng. Tuy nhiên, nếu nút đó thêm một khối với thông tin không chính xác, số tiền cọc của nút đó sẽ mất (một phần hoặc toàn bộ).\\
+
+Mỗi cơ chế PoS có cách chọn xác thực viên khác nhau. Thông thường, quá trình lựa chọn ngẫu nhiên sẽ diễn ra, các yếu tố ảnh hưởng đến có thể kể ra như số lượng tiền mã hoá nút đó bỏ ra để cọc, nút đó tham gia quá trình cọc bao lâu rồi, vân vân. Mặc dù, ai cũng có thể tham gia cọc, nhưng tỷ lệ được chọn làm xác thực viên là rất thấp nếu số tiền bỏ ra để cọc. Vì lý do này, các thành viên tham gia quá trình cọc gia nhập vào các \textit{bể cọc}\footnote{Staking pool}. Chủ của mỗi bể cọc sẽ thiết lập một nút tham gia quá trình xác thực, và các thành viên trong bể cọc sẽ "dồn tiền" để nút đó tham gia cọc để gia tăng cơ hội được chọn làm nút xác thực. Phần thưởng khi nút đó thêm khối mới vào chuỗi sẽ được chia cho các thành viên trong bể cọc đó.
+
+\subsubsection{Các cơ chế đồng thuận khác}
+
+Ngoài hai cơ chế đồng thuận phổ biến PoW và PoS, có rất nhiều các thuật toán đồng thuận khác. \textit{Bằng chứng bộ nhớ}\footnote{Proof of Capacity - PoC} (PoC) là một cơ chế cho phép chia sẻ không gian bộ nhớ của một nút cho mạng chuỗi khối. Nút nào có càng nhiều không gian bộ nhớ, nút đó càng có nhiều quyền duy trì mạng. \textit{Bằng chứng hoạt động}\footnote{Proof of Activity - PoA} (PoA), được sử dụng trên chuỗi khối \textit{Decred}, là một cơ chế kết hợp giữa PoW và PoS. \textit{Bằng chứng tiêu thụ}\footnote{Proof of Burn - PoB} (PoB) lại yêu cầu các nút gửi lượng nhỏ tiền của chúng tới một địa chỉ ví không thể truy cập. Một cơ chế khác là \textit{Bằng chứng lịch sử}\footnote{Proof of History - PoH} (PoH), được phát triển bởi \textit{Solana Project}, tương tự như cơ chế \textit{Bằng chứng thời gian còn lại}\footnote{Proof of Elapsed Time - PoET} (PoET), mã hoá thông tin thời gian trôi qua để đạt được sự đồng thuận mà không cần tiêu tốn nhiều tài nguyên.
