@@ -1,1 +1,12 @@
 \section{Cơ chế hoạt động}
+
+Đầu tiên mọi dữ liệu sẽ được mã hoá và được lưu dưới dạng mã băm (còn gọi là đối tượng IPFS). Ý tưởng chủ đạo là nếu trình duyệt của bạn muốn truy cập một trang nào đó trên IPFS thì chỉ cần đưa ra mã băm rồi mạng sẽ tìm máy có lưu trữ dữ liệu khớp với mã băm và sau đó tải dữ liệu, trang đó về từ máy tính đấy về cho bạn.\\
+
+Cách thức hoạt động của IPFS sẽ tương tự như BitTorrent, đồng nghĩa với mỗi máy tính tham gia trong mạng lưới của nó sẽ đảm nhận cả việc tải xuống lẫn tải lên dữ liệu mà không cần có sự có mặt của một máy chủ trung tâm.\\
+
+Tổng quan, cách hoạt động của IPFS sẽ có 2 phần chính:
+
+\begin{itemize}
+    \item Xác định tệp có địa chỉ nội dung (giá trị băm của tệp đó).
+    \item Tìm dữ liệu được lưu trữ và tải xuống: khi bạn có đoạn hash của tệp hay trang cần tải, mạng sẽ tìm và kết nối tới máy tốt nhất để tải dữ liệu xuống cho bạn.
+\end{itemize}
