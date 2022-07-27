@@ -8,5 +8,5 @@
         "**/*.toc": true,
         "**/*.gz": true,
         "**/*.log": true
-    },
+    }
 }
